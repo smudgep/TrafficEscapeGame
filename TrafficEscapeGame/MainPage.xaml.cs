@@ -1,24 +1,34 @@
-﻿namespace TrafficEscapeGame
+﻿using Microsoft.UI.Xaml.Documents;
+
+namespace TrafficEscapeGame
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
+            
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private void OnStartClicked(object? sender, EventArgs e)
         {
-            count++;
+            StartGame();
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void StartGame()
+        {
+            //throw new NotImplementedException();
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void HighScoreBtn_Clicked(object sender, EventArgs e)
+        {
+            //Get Highest result from file storing Results
+        }
+
+        private void OnInstructionsBtn_Clicked(object sender, EventArgs e)
+        {
+            //Open Settings Page
         }
     }
 }
