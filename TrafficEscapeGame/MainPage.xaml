@@ -10,7 +10,8 @@
     </ContentPage.Resources>
 
     <VerticalStackLayout>
-        <Grid>
+        <Grid HorizontalOptions="Center" 
+               VerticalOptions="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -18,83 +19,41 @@
             </Grid.RowDefinitions>
             <Label 
                 Text="Traffic Escape Game" 
-                FontSize="32" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center"
+                FontSize="Large" 
                 Grid.Row="0"
                 Margin="0,20,0,20"/>
             <Image 
                 Source="traffic_escape_logo.png" 
                 HeightRequest="100"
                 WidthRequest="100"
-                HorizontalOptions="Center" 
-                VerticalOptions="Center"
                 Grid.Row="1"
                 Margin="0,0,0,20"/>
             <HorizontalStackLayout 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center"
                 Grid.Row="2"
                 Margin="0,20,0,20"
-                Spacing="20">
-                    <Button
+                Spacing="20"
+                >
+                <Button
                          x:Name="InstructionsBtn"
                          Padding="10"
                          Text="Instructions" 
                          Clicked="OnInstructionsBtn_Clicked"
                          HorizontalOptions="Start"/>
 
-                    <Button
+                <Button
                          x:Name="StartGameBtn"
                          Padding="10"
                          Text="Sart Game" 
                          Clicked="OnStartClicked"
                          HorizontalOptions="Center"/>
 
-                    <Button
+                <Button
                          x:Name="HighScoreBtn"
                          Padding="10"
                          Text="High Score"
                          Clicked="HighScoreBtn_Clicked"
                          HorizontalOptions="End"/>
-                </HorizontalStackLayout>
+            </HorizontalStackLayout>
         </Grid>
-
-
-
-
-
-
-        <!--
-                <HorizontalStackLayout>
-                    <Button
-                     x:Name="InstructionsBtn"
-                     Padding="10"
-                     Text="Instructions" 
-                     Clicked="OnInstructionsBtn_Clicked"
-                     HorizontalOptions="Start"/>
-
-                    <Button
-                     x:Name="StartGameBtn"
-                     Padding="10"
-                     Text="Sart Game" 
-                     Clicked="OnStartClicked"
-                     HorizontalOptions="Center"/>
-
-                     <Button
-                     x:Name="HighScoreBtn"
-                     Padding="10"
-                     Text="High Score"
-                     Clicked="HighScoreBtn_Clicked"
-                     HorizontalOptions="End"/>
-                </HorizontalStackLayout>
--->
-           
-
-
-
-        
-        
-
     </VerticalStackLayout>
 </ContentPage>

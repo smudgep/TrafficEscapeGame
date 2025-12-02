@@ -7,7 +7,6 @@ namespace TrafficEscapeGame
 
         public MainPage()
         {
-            
             InitializeComponent();
         }
 
