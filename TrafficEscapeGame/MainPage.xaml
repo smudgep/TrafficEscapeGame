@@ -1,17 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrafficEscapeGame.MainPage" Title="HomePage">
+             x:Class="TrafficEscapeGame.MainPage" Title="Traffic Escape!"
+             xmlns:local="clr-namespace:TrafficEscapeGame">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="StartWindowColor">LightGrey</Color>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="ForestGreen" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="10"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <VerticalStackLayout>
-        <Grid HorizontalOptions="Center" 
-               VerticalOptions="Center">
+    <Grid x:Name="MainGrid" BackgroundColor="DarkRed">
+
+        <Grid x:Name="GameOverLay" HorizontalOptions="Center" 
+               VerticalOptions="Center" IsVisible="True" 
+               BackgroundColor="DarkOrange" Padding="20" >
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -20,40 +30,93 @@
             <Label 
                 Text="Traffic Escape Game" 
                 FontSize="Large" 
-                Grid.Row="0"
-                Margin="0,20,0,20"/>
+                Grid.Row="0"/>
             <Image 
-                Source="traffic_escape_logo.png" 
+                Source="trafficescapelogo.png" 
                 HeightRequest="100"
                 WidthRequest="100"
                 Grid.Row="1"
-                Margin="0,0,0,20"/>
+                Margin="20"/>
             <HorizontalStackLayout 
                 Grid.Row="2"
-                Margin="0,20,0,20"
-                Spacing="20"
-                >
+                Spacing="20">
                 <Button
                          x:Name="InstructionsBtn"
-                         Padding="10"
                          Text="Instructions" 
                          Clicked="OnInstructionsBtn_Clicked"
                          HorizontalOptions="Start"/>
 
                 <Button
                          x:Name="StartGameBtn"
-                         Padding="10"
-                         Text="Sart Game" 
-                         Clicked="OnStartClicked"
+                         Text="Start Game" 
+                         Clicked="OnStartBtn_Clicked"
                          HorizontalOptions="Center"/>
 
                 <Button
                          x:Name="HighScoreBtn"
-                         Padding="10"
                          Text="High Score"
                          Clicked="HighScoreBtn_Clicked"
                          HorizontalOptions="End"/>
             </HorizontalStackLayout>
         </Grid>
-    </VerticalStackLayout>
+
+        <!--ROAD TEMPLATE-Need to add actual image in,
+            MIGHT KEEP AS BOXVIEW IF IT LOOKS GOOD ENOUGH
+        
+        -->
+        <AbsoluteLayout x:Name="GameCanvas"
+                IsVisible="False"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                BackgroundColor="LightSkyBlue">
+
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+
+                <SwipeGestureRecognizer Direction="Left, Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+
+            </AbsoluteLayout.GestureRecognizers>
+
+            <BoxView BackgroundColor="Gray"
+             AbsoluteLayout.LayoutFlags="All"
+             AbsoluteLayout.LayoutBounds="0.5,0,0.75,1" 
+             x:Name="road"/>
+
+            
+            <BoxView BackgroundColor="White"
+             WidthRequest="10"
+             AbsoluteLayout.LayoutFlags="SizeProportional"
+             AbsoluteLayout.LayoutBounds="0.5, 0.1, 0.75, 1" />
+
+            
+            <BoxView BackgroundColor="White"
+             WidthRequest="10"
+             AbsoluteLayout.LayoutFlags="SizeProportional"
+             AbsoluteLayout.LayoutBounds="0.66, 0.1, 1.25, 1" />
+
+           
+            <VerticalStackLayout AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         Padding="10"
+                         InputTransparent="True">
+
+                
+                <Label x:Name="ScoreLbl" Text="Distance: 0" FontSize="Large" TextColor="Black"/>
+                <Label x:Name="CoinsLbl" Text="Coins: 0" FontSize="Large" TextColor="Yellow"/>
+                <Button x:Name="QuitBtn" Text="Quit" Padding="10" Clicked="OnExitBtn_Clicked" HorizontalOptions="Start" BackgroundColor="Black" TextColor="White"/>
+            </VerticalStackLayout>
+
+            
+            <Image x:Name="PlayerCar" IsVisible="False"
+           Source="bluecar.png"
+           WidthRequest="120"
+           HeightRequest="120"
+           AbsoluteLayout.LayoutFlags="PositionProportional"
+           AbsoluteLayout.LayoutBounds="0.5, 0.9, AutoSize, AutoSize" />
+
+        </AbsoluteLayout>
+
+
+    </Grid>
+
 </ContentPage>
