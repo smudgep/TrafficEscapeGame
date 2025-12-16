@@ -61,7 +61,7 @@
             </HorizontalStackLayout>
         </Grid>
 
-        <!--ROAD canvas -->
+      
         <AbsoluteLayout x:Name="GameCanvas"
                 IsVisible="False"
                 HorizontalOptions="Fill"
@@ -74,7 +74,7 @@
                 <SwipeGestureRecognizer Direction="Left, Right" Swiped="SwipeGestureRecognizer_Swiped"/>
             </AbsoluteLayout.GestureRecognizers>
 
-            <!-- ROAD pair (stacked vertically, Y of second starts at 1 so we can scroll) -->
+           
             <BoxView x:Name="Road1"
                  BackgroundColor="Gray"
                  AbsoluteLayout.LayoutFlags="All"  
@@ -87,7 +87,7 @@
                  AbsoluteLayout.LayoutBounds="0.5, 1, 0.75, 1"
                  ZIndex="0"/>
 
-            <!-- Lane markers — thin vertical strips that span the road height (positioned proportionally within the road) -->
+           
             <BoxView x:Name="LeftLane1"
                  BackgroundColor="White"
                  AbsoluteLayout.LayoutFlags="All"
@@ -112,7 +112,7 @@
                  AbsoluteLayout.LayoutBounds="0.625, 1, 0.02, 1"
                  ZIndex="0"/>
 
-            <!-- Header / HUD: ensure this is above the road -->
+           
             <VerticalStackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="10" InputTransparent="True"  BackgroundColor="LightSkyBlue" x:Name="vs">
                 <Label x:Name="ScoreLbl" Text="Distance: 0" FontSize="Large" TextColor="Black"/>
                 <Label x:Name="CoinsLbl" Text="Coins: 0" FontSize="Large" TextColor="Yellow"/>
