@@ -20,7 +20,8 @@
 
         <Grid x:Name="GameOverLay" HorizontalOptions="Center" 
                VerticalOptions="Center" IsVisible="True" 
-               BackgroundColor="DarkOrange" Padding="20" >
+               BackgroundColor="DarkOrange" Padding="20"
+               ZIndex="2" >
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -60,62 +61,84 @@
             </HorizontalStackLayout>
         </Grid>
 
-        <!--ROAD TEMPLATE-Need to add actual image in,
-            MIGHT KEEP AS BOXVIEW IF IT LOOKS GOOD ENOUGH
-        
-        -->
+        <!--ROAD canvas -->
         <AbsoluteLayout x:Name="GameCanvas"
                 IsVisible="False"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
-                BackgroundColor="LightSkyBlue">
+                BackgroundColor="LightSkyBlue"
+                ZIndex="0">
 
             <AbsoluteLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-
                 <SwipeGestureRecognizer Direction="Left, Right" Swiped="SwipeGestureRecognizer_Swiped"/>
-
             </AbsoluteLayout.GestureRecognizers>
 
-            <BoxView BackgroundColor="Gray"
-             AbsoluteLayout.LayoutFlags="All"
-             AbsoluteLayout.LayoutBounds="0.5,0,0.75,1" 
-             x:Name="road"/>
+            <!-- ROAD pair (stacked vertically, Y of second starts at 1 so we can scroll) -->
+            <BoxView x:Name="Road1"
+                 BackgroundColor="Gray"
+                 AbsoluteLayout.LayoutFlags="All"  
+                 AbsoluteLayout.LayoutBounds="0.5, 1, 0.75, 1"
+                 ZIndex="0"/>
 
-            
-            <BoxView BackgroundColor="White"
-             WidthRequest="10"
-             AbsoluteLayout.LayoutFlags="SizeProportional"
-             AbsoluteLayout.LayoutBounds="0.5, 0.1, 0.75, 1" />
+            <BoxView x:Name="Road2"
+                 BackgroundColor="Gray"
+                 AbsoluteLayout.LayoutFlags="All"  
+                 AbsoluteLayout.LayoutBounds="0.5, 1, 0.75, 1"
+                 ZIndex="0"/>
 
-            
-            <BoxView BackgroundColor="White"
-             WidthRequest="10"
-             AbsoluteLayout.LayoutFlags="SizeProportional"
-             AbsoluteLayout.LayoutBounds="0.66, 0.1, 1.25, 1" />
+            <!-- Lane markers — thin vertical strips that span the road height (positioned proportionally within the road) -->
+            <BoxView x:Name="LeftLane1"
+                 BackgroundColor="White"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.375, 0, 0.02, 1"
+                 ZIndex="0"/>
 
-           
-            <VerticalStackLayout AbsoluteLayout.LayoutFlags="All"
-                         AbsoluteLayout.LayoutBounds="0,0,1,1"
-                         Padding="10"
-                         InputTransparent="True">
+            <BoxView x:Name="LeftLane2"
+                 BackgroundColor="White"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.375, 1, 0.02, 1"
+                 ZIndex="0"/>
 
-                
+            <BoxView x:Name="RightLane1"
+                 BackgroundColor="White"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.625, 0, 0.02, 1"
+                 ZIndex="0"/>
+
+            <BoxView x:Name="RightLane2"
+                 BackgroundColor="White"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.625, 1, 0.02, 1"
+                 ZIndex="0"/>
+
+            <!-- Header / HUD: ensure this is above the road -->
+            <VerticalStackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="10" InputTransparent="True"  BackgroundColor="LightSkyBlue" x:Name="vs">
                 <Label x:Name="ScoreLbl" Text="Distance: 0" FontSize="Large" TextColor="Black"/>
                 <Label x:Name="CoinsLbl" Text="Coins: 0" FontSize="Large" TextColor="Yellow"/>
                 <Button x:Name="QuitBtn" Text="Quit" Padding="10" Clicked="OnExitBtn_Clicked" HorizontalOptions="Start" BackgroundColor="Black" TextColor="White"/>
             </VerticalStackLayout>
 
-            
             <Image x:Name="PlayerCar" IsVisible="False"
-           Source="bluecar.png"
-           WidthRequest="120"
-           HeightRequest="120"
-           AbsoluteLayout.LayoutFlags="PositionProportional"
-           AbsoluteLayout.LayoutBounds="0.5, 0.9, AutoSize, AutoSize" />
+               Source="bluecar.png"
+               WidthRequest="120"
+               HeightRequest="120"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="0.5, 0.9, AutoSize, AutoSize"
+               ZIndex="1" />
+
+            <Label x:Name="CountdownLbl"
+               Text="3"
+               FontSize="200"
+               TextColor="YellowGreen"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.5, 0.5"  
+               IsVisible="False"
+               ZIndex="3" />
 
         </AbsoluteLayout>
-
 
     </Grid>
 
