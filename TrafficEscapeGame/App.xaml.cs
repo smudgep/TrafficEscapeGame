@@ -1,15 +1,13 @@
-﻿namespace TrafficEscapeGame
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
+﻿using TrafficEscapeGame.Views;
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+namespace TrafficEscapeGame;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new NavigationPage(new MainMenuPage());
     }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrafficEscapeGame.Views.SettingsPage">
+    <VerticalStackLayout BackgroundColor="SteelBlue">
+
+        <Button Text="Back to Main Menu" Clicked="OnBackToMainMenuClicked"/>
+        <Label 
+            Text="Settings (CHANGE)"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+        <Label Text="General" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               HeightRequest="200"
+               Padding="15"
+               FontSize="45"
+               FontAttributes="Bold" TextDecorations="Underline"/>
+
+        <Border Padding="20" BackgroundColor="LightSteelBlue">
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="🌓 Dark Mode" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+                <Switch x:Name="DarkModeSwitch" 
+                    IsToggled="False"
+                    ThumbColor="Gray"
+                    OnColor="SteelBlue"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </Border>
+        <Border Padding="20" BackgroundColor="LightSteelBlue">
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Sound" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+                <Switch x:Name="SoundSwitch" 
+                    IsToggled="False"
+                    ThumbColor="Gray"
+                    OnColor="SteelBlue"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </Border>
+        <Border Padding="20" BackgroundColor="LightSteelBlue">
+            <VerticalStackLayout>
+                <Label Text="Difficulty"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <RadioButton Content="Easy"/>
+                <RadioButton Content="Medium"/>
+                <RadioButton Content="Hard"/>
+            </VerticalStackLayout>
+        </Border>
+
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

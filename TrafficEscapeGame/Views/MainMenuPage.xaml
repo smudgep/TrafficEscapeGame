@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrafficEscapeGame.Views.MainMenuPage">
+    
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="WidthRequest" Value="250"/>
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout BackgroundColor="SteelBlue">
+        <Label
+            Text="{Binding Title}"
+            FontSize="40"
+            HorizontalOptions="Center"/>
+
+        <Image Source="trafficescapelogo.png" HeightRequest="220" WidthRequest="220"/>
+
+        <StackLayout>
+        <Button Text="Start Game" Clicked="OnStartGameBtnClicked"/>
+        <Button Text="Settings" Clicked="OnSettingsBtnClicked"/>
+        <Button Text="Garage" Clicked="OnGarageBtnClicked"/>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
