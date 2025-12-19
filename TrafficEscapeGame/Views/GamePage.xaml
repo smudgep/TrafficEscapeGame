@@ -2,13 +2,101 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrafficEscapeGame.Views.GamePage"
-             Title="GamePage">
-    <VerticalStackLayout>
-        
-        <Label 
-            Text="{Binding Score}"
-            FontSize="24" />
+             Title="Traffic Escape">
 
-        <Button Text="Score" Clicked="OnScoreClicked" HeightRequest="200"/>
-    </VerticalStackLayout>
+    <AbsoluteLayout x:Name="GameArea" 
+                    BackgroundColor="DarkGreen"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+
+        
+        <BoxView x:Name="RoadBackground"
+                 Color="#2E2E2E"
+                 AbsoluteLayout.LayoutBounds="0.5,0.,0.8,1"
+                 AbsoluteLayout.LayoutFlags="All"/>
+
+        
+        <BoxView x:Name="RoadLeftEdge"
+                 Color="Yellow"
+                 AbsoluteLayout.LayoutBounds="0.1,0,0.02,1"
+                 AbsoluteLayout.LayoutFlags="All"/>
+
+        <BoxView x:Name="RoadRightEdge"
+                 Color="Yellow"
+                 AbsoluteLayout.LayoutBounds="0.90,0,0.02,1"
+                 AbsoluteLayout.LayoutFlags="All"/>
+
+        
+        <BoxView x:Name="LaneDivider1"
+                 Color="White"
+                 AbsoluteLayout.LayoutBounds="0.35,0,0.008,1"
+                 AbsoluteLayout.LayoutFlags="All"/>
+
+        <BoxView x:Name="LaneDivider2"
+                 Color="White"
+                 AbsoluteLayout.LayoutBounds="0.65,0,0.008,1"
+                 AbsoluteLayout.LayoutFlags="All"/>
+
+        
+        <BoxView x:Name="LaneMarker1"
+                 Color="White"
+                 WidthRequest="30"
+                 HeightRequest="10"
+                 AbsoluteLayout.LayoutBounds="0.65,0.3,1000,10"/>
+
+        <BoxView x:Name="LaneMarker2"
+                 Color="White"
+                 WidthRequest="30"
+                 HeightRequest="10"
+                 AbsoluteLayout.LayoutBounds="0.35,0.3,1400,10"/>
+
+        <BoxView x:Name="LaneMarker3"
+                 Color="White"
+                 WidthRequest="30"
+                 HeightRequest="10"
+                 AbsoluteLayout.LayoutBounds="0.75,10.3,1850,10"/>
+
+        <Image x:Name="PlayerCar"
+               Source="bluecar.png"
+               WidthRequest="80"
+               HeightRequest="150"
+               AbsoluteLayout.LayoutBounds="{Binding CarBounds}"
+               AbsoluteLayout.LayoutFlags="XProportional, YProportional">
+            <Image.Shadow>
+                <Shadow Brush="Black" Offset="0,5" Opacity="0.5"/>
+            </Image.Shadow>
+        </Image>
+
+        
+        <Border x:Name="TopUI"
+               BackgroundColor="#80000000"
+               Padding="10"
+               AbsoluteLayout.LayoutBounds="0,0,1,80"
+               AbsoluteLayout.LayoutFlags="WidthProportional">
+
+            <HorizontalStackLayout Spacing="20">
+                <Label Text="{Binding Score, StringFormat='SCORE: {0}'}"
+                       TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+
+                <Label x:Name="DistanceLabel"
+                       Text="DISTANCE: 0m"
+                       TextColor="LightBlue"
+                       FontSize="16"
+                       VerticalOptions="Center"/>
+
+                <Button x:Name="MenuButton"
+                        Text="☰"
+                        TextColor="White"
+                        FontSize="24"
+                        BackgroundColor="Transparent"
+                        Clicked="OnMenuButtonClicked"
+                        HorizontalOptions="End"/>
+            </HorizontalStackLayout>
+
+        </Border>
+
+    </AbsoluteLayout>
 </ContentPage>
