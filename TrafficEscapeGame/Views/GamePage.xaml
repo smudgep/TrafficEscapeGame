@@ -3,19 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrafficEscapeGame.Views.GamePage"
              Title="Traffic Escape">
-
+    <!--Game ARea-->
     <AbsoluteLayout x:Name="GameArea" 
                     BackgroundColor="DarkGreen"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill">
-
-        
+        <!-- Road Background -->
         <BoxView x:Name="RoadBackground"
                  Color="#2E2E2E"
                  AbsoluteLayout.LayoutBounds="0.5,0.,0.8,1"
-                 AbsoluteLayout.LayoutFlags="All"/>
+                 AbsoluteLayout.LayoutFlags="All">
+            <BoxView.Shadow>
+                <Shadow Brush="Black" Offset="0,10" Opacity="0.3" Radius="20"/>
+            </BoxView.Shadow>
+        </BoxView>
 
-        
         <BoxView x:Name="RoadLeftEdge"
                  Color="Yellow"
                  AbsoluteLayout.LayoutBounds="0.1,0,0.02,1"
@@ -26,54 +28,81 @@
                  AbsoluteLayout.LayoutBounds="0.90,0,0.02,1"
                  AbsoluteLayout.LayoutFlags="All"/>
 
-        
         <BoxView x:Name="LaneDivider1"
                  Color="White"
                  AbsoluteLayout.LayoutBounds="0.35,0,0.008,1"
-                 AbsoluteLayout.LayoutFlags="All"/>
+                 AbsoluteLayout.LayoutFlags="All">
+            <BoxView.Shadow>
+                <Shadow Brush="White" Offset="0,0" Opacity="0.3" Radius="2"/>
+            </BoxView.Shadow>
+        </BoxView>
 
         <BoxView x:Name="LaneDivider2"
                  Color="White"
                  AbsoluteLayout.LayoutBounds="0.65,0,0.008,1"
-                 AbsoluteLayout.LayoutFlags="All"/>
+                 AbsoluteLayout.LayoutFlags="All">
+            <BoxView.Shadow>
+                <Shadow Brush="White" Offset="0,0" Opacity="0.3" Radius="2"/>
+            </BoxView.Shadow>
+        </BoxView>
 
-        
-        <BoxView x:Name="LaneMarker1"
-                 Color="White"
-                 WidthRequest="30"
-                 HeightRequest="10"
-                 AbsoluteLayout.LayoutBounds="0.65,0.3,1000,10"/>
+        <!-- Lane Markers -->
+        <BoxView x:Name="LeftMarker1" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.225,0.1,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="LeftMarker2" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.225,0.4,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="LeftMarker3" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.225,0.7,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
 
-        <BoxView x:Name="LaneMarker2"
-                 Color="White"
-                 WidthRequest="30"
-                 HeightRequest="10"
-                 AbsoluteLayout.LayoutBounds="0.35,0.3,1400,10"/>
+        <BoxView x:Name="MiddleMarker1" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.5,0.2,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="MiddleMarker2" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.5,0.5,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="MiddleMarker3" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.5,0.8,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
 
-        <BoxView x:Name="LaneMarker3"
-                 Color="White"
-                 WidthRequest="30"
-                 HeightRequest="10"
-                 AbsoluteLayout.LayoutBounds="0.75,10.3,1850,10"/>
+        <BoxView x:Name="RightMarker1" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.775,0.3,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="RightMarker2" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.775,0.6,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
+        <BoxView x:Name="RightMarker3" Color="White" WidthRequest="40" HeightRequest="12"
+                 AbsoluteLayout.LayoutBounds="0.775,0.9,40,12"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
 
         <Image x:Name="PlayerCar"
-               Source="bluecar.png"
-               WidthRequest="80"
-               HeightRequest="150"
-               AbsoluteLayout.LayoutBounds="{Binding CarBounds}"
-               AbsoluteLayout.LayoutFlags="XProportional, YProportional">
+                 Source="bluecar.png"
+                 WidthRequest="80"
+                 HeightRequest="150"
+                 AbsoluteLayout.LayoutBounds="{Binding CarBounds}"
+                 AbsoluteLayout.LayoutFlags="PositionProportional">
             <Image.Shadow>
                 <Shadow Brush="Black" Offset="0,5" Opacity="0.5"/>
             </Image.Shadow>
         </Image>
 
-        
+        <AbsoluteLayout x:Name="ObstaclesContainer"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Transparent"/>
+
+        <AbsoluteLayout x:Name="CoinsContainer"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Transparent"/>
+
         <Border x:Name="TopUI"
                BackgroundColor="#80000000"
                Padding="10"
                AbsoluteLayout.LayoutBounds="0,0,1,80"
                AbsoluteLayout.LayoutFlags="WidthProportional">
-
             <HorizontalStackLayout Spacing="20">
                 <Label Text="{Binding Score, StringFormat='SCORE: {0}'}"
                        TextColor="White"
@@ -87,6 +116,12 @@
                        FontSize="16"
                        VerticalOptions="Center"/>
 
+                <Label Text="{Binding CoinCount, StringFormat='COINS: {0}'}"
+                       TextColor="Gold"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+
                 <Button x:Name="MenuButton"
                         Text="☰"
                         TextColor="White"
@@ -95,7 +130,6 @@
                         Clicked="OnMenuButtonClicked"
                         HorizontalOptions="End"/>
             </HorizontalStackLayout>
-
         </Border>
 
     </AbsoluteLayout>

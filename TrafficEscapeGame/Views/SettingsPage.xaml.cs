@@ -4,16 +4,22 @@ namespace TrafficEscapeGame.Views;
 
 public partial class SettingsPage : ContentPage
 {
-    private SettingsViewModel settingsViewModel;
+    private readonly SettingsViewModel _viewModel;
 
-	public SettingsPage()
-	{
-		settingsViewModel = new SettingsViewModel();
-		BindingContext = settingsViewModel;
+    public SettingsPage()
+    {
         InitializeComponent();
-	}
-	private async void OnBackToMainMenuClicked(object sender, EventArgs e)
-	{
-		await Navigation.PopAsync();
+        //set binding context to settings view model
+        _viewModel = new SettingsViewModel();
+        BindingContext = _viewModel;
     }
+    //navigate back to main menu and save settings
+    private async void OnBackToMainMenuClicked(object sender, EventArgs e)
+    {
+        await _viewModel.SaveSettings();
+        await Navigation.PopAsync();
+    }
+    //
+    private void OnSoundToggled(object sender, ToggledEventArgs e) =>
+        _viewModel.OnSoundToggled();
 }

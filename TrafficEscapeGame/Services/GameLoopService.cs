@@ -5,18 +5,27 @@ namespace TrafficEscapeGame.Services;
 public class GameLoopService
 {
     private int _currentLane = 1;
-    private readonly double[] _lanePositions = { 0.25, 0.5, 0.75 };
-    public double PlayerXPos { get; set; }
-    public double PlayerYPos { get; set; }
+    private readonly double[] _lanePositions = { 0.22, 0.5, 0.78 };
 
-    public event EventHandler PositionChanged;
+    // Player's current position
+    public double PlayerXPos { get; private set; }
+    public double PlayerYPos { get; private set; }
 
-    public void Initialize(double height, double width)
-    { 
-        UpdatePlayerPosition();
+    //event when player moves to new position
+    public event EventHandler? PositionChanged;
+
+
+    //initial player position 
+    public void Initialize()
+    {
+        PlayerXPos = _lanePositions[_currentLane];
+        PlayerYPos = 0.8;
+        PositionChanged?.Invoke(this, EventArgs.Empty);
     }
+
     public void MoveRight()
     {
+        //move right if not in right lane
         if (_currentLane < 2)
         {
             _currentLane++;
@@ -26,6 +35,7 @@ public class GameLoopService
 
     public void MoveLeft()
     {
+        //move left if not in left lane
         if (_currentLane > 0)
         {
             _currentLane--;
@@ -33,13 +43,11 @@ public class GameLoopService
         }
     }
 
+    //updates player position and triggers event
     private void UpdatePlayerPosition()
     {
         PlayerXPos = _lanePositions[_currentLane];
         PlayerYPos = 0.8;
-        Console.WriteLine($"Lane: {_currentLane}, X: {PlayerXPos}, Y: {PlayerYPos}");
-
         PositionChanged?.Invoke(this, EventArgs.Empty);
     }
-
 }
