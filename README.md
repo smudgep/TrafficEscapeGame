@@ -20,7 +20,7 @@ Graphics: Microsoft.Maui.Graphics & AbsoluteLayout for high-performance position
 Setup: 
   SETUP INSTRUCTIONS: To run this project locally, ensure you have the .NET 8 SDK and Visual Studio 2022 (with the .NET         MAUI workload) installed.
   
-  Clone the Repository: git clone TrafficEscapeGame
+  Clone the Repository: git clone https://github.com/smudgep/TrafficEscapeGame.git
   Open the project: Open the .sln file in visula studio.
   Run the game: Selct you target device (Android Emulator, iOS Simulator, or Windows Machine) and press start button
 
@@ -31,7 +31,7 @@ Usage:
   
   Objective: Avoid the red cars. Each lane change and coin collection increases your score.
   
-  Pause: Tap the menu icon (☰) during gameplay to pause.
+  Pause: Tap the menu icon during gameplay to pause.
 
 AI Acknowledgment: 
 Gemini: Provided boilerplate code for the BaseViewModel (INotifyPropertyChanged) and suggested logic for the   OnSizeAllocated method.
