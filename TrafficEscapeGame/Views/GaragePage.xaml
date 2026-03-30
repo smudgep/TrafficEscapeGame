@@ -2,13 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrafficEscapeGame.Views.GaragePage"
-             Title="GaragePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Garage"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Select Your Car"
+             BackgroundColor="SteelBlue">
 
-        <Button Text="MainMenu" Clicked="OnMainMenuButton_Clicked"/>
+    <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+
+        <Label Text="Garage" FontSize="32" HorizontalOptions="Center" FontAttributes="Bold" />
+
+        <Image x:Name="CarPreview" Source="bluecar.png" HeightRequest="150" WidthRequest="150" />
+
+        <Label x:Name="StatusLabel" Text="Currently Selected: Blue" HorizontalOptions="Center" FontAttributes="Italic" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button Text="Select Blue" Clicked="OnSelectBlue" BackgroundColor="DarkBlue" WidthRequest="120"/>
+            <Button Text="Select Red" Clicked="OnSelectRed" BackgroundColor="DarkRed" WidthRequest="120"/>
+        </HorizontalStackLayout>
+
+        <Button Text="Back to Main Menu" 
+                Clicked="OnMainMenuButton_Clicked" 
+                Margin="0,30,0,0"
+                BackgroundColor="Gray" />
+
     </VerticalStackLayout>
 </ContentPage>
