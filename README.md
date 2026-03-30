@@ -34,6 +34,6 @@ Usage:
   Pause: Tap the menu icon during gameplay to pause.
 
 AI Acknowledgment: 
-Gemini: Provided boilerplate code for the BaseViewModel (INotifyPropertyChanged) and suggested logic for the   OnSizeAllocated method.
+Gemini: Provided boilerplate code for the BaseViewModel (INotifyPropertyChanged) and suggested logic for the OnSizeAllocated method, provided samples for lane movement and positioning.
   
 ChatGPT: Used for troubleshooting XAML AbsoluteLayout positioning and debugging the Dispatcher.StartTimer logic for road   animations.
