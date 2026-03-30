@@ -5,6 +5,8 @@ Traffic Escape is a high-speed arcade game developed using .NET MAUI. The player
 
 The game features dynamic obstacle spawning, difficulty settings (Easy, Normal, Hard), and an MVVM-based architecture to manage game states, animations, and collision detection. This project was designed to demonstrate real-time UI updates, gesture handling, and service-oriented game logic in a cross-platform environment.
 
+Project Demonstration
+Click here to watch the Video Demonstration ---- https://youtu.be/_BJRJVE6UHk
 
 Technologies Used
 Framework: .NET MAUI (Multi-platform App UI)
